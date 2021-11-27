@@ -17,5 +17,9 @@
     <fragment
         android:id="@+id/createTaskFragment"
         android:name="com.todo.ui.createtask.CreateTaskFragment"
-        android:label="CreateTaskFragment" />
+        android:label="CreateTaskFragment" >
+        <action
+            android:id="@+id/action_createTaskFragment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+    </fragment>
 </navigation>

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/fragment_create_task.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_tasks.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/recycler.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/recycler_row_task.xml" value="0.20443587270973965" />
       </map>
     </option>
   </component>

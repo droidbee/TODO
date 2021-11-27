@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.todo.ui.createtask.CreateTaskViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,7 +18,9 @@
             android:id="@+id/create_task_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="@string/enter_task"
             android:inputType="textPersonName"
@@ -21,6 +29,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="Autofill" />
+
+
+
 
 <!--        <Spinner-->
 <!--            android:id="@+id/spinner"-->
@@ -33,15 +44,40 @@
 <!--            app:layout_constraintStart_toStartOf="parent"-->
 <!--            app:layout_constraintTop_toBottomOf="@+id/edt_task" />-->
 
+
+
+        <EditText
+            android:id="@+id/date_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Select Date"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/create_task_et"
+            app:layout_constraintTop_toBottomOf="@+id/create_task_et" />
+
+        <ImageView
+            android:id="@+id/calender_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/date_et"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/date_et"
+            app:layout_constraintTop_toTopOf="@+id/date_et"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
         <Button
-            android:id="@+id/btn_add"
+            android:id="@+id/add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/create_task_et" />
+            app:layout_constraintTop_toBottomOf="@+id/date_et" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
