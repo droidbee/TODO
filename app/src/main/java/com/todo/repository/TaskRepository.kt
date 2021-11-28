@@ -10,10 +10,10 @@ class TaskRepository (val taskDb: TaskDatabase){
     suspend fun insert(taskEntity: TaskEntity)=
         taskDb.taskDao.insert(taskEntity)
 
-    fun update(taskEntity: TaskEntity)=
+    suspend fun update(taskEntity: TaskEntity)=
         taskDb.taskDao.update(taskEntity)
 
-    fun delete(taskEntity: TaskEntity)=
+    suspend fun delete(taskEntity: TaskEntity)=
         taskDb.taskDao.delete(taskEntity)
 
     fun getAllTasks() :LiveData<List<TaskEntity>> = taskDb.taskDao.getAllTasks()

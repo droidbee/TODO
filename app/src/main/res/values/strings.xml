@@ -5,4 +5,15 @@
     <string name="enter_task">Enter Task</string>
     <string name="add">Add</string>
     <string name="create">Create</string>
+    <string name="update">Update</string>
+    <string name="undo">Undo</string>
+
+    <!--Toast and Log Messages-->
+    <string name="task_deleted">Task deleted!</string>
+    <string name="task_cannot_be_empty">Task cannot be empty!</string>
+    <string name="task_updated">Task updated!</string>
+    <string name="select_date">Please select a date</string>
+    <string name="task_exists">Task already exists. Please enter a different task.</string>
+    <string name="unique_constraint_exception">Unique Constraint Exception</string>
+
 </resources>

@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="viewmodel"
-            type="com.todo.ui.create.TaskViewModel" />
+            name="task"
+            type="com.todo.db.TaskEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
 
 
         <EditText
-            android:id="@+id/create_task_et"
+            android:id="@+id/updatecreate_task_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -28,42 +28,44 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="Autofill" />
+            tools:ignore="Autofill"
+            android:text="@{task.taskName}"/>
 
 
         <EditText
-            android:id="@+id/date_et"
+            android:id="@+id/updatedate_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
+            android:hint="Select Date"
             android:inputType="none"
             android:clickable="true"
             android:focusable="false"
-            android:hint="Select Date"
-            app:layout_constraintStart_toStartOf="@+id/create_task_et"
-            app:layout_constraintTop_toBottomOf="@+id/create_task_et" />
+            app:layout_constraintStart_toStartOf="@+id/updatecreate_task_et"
+            app:layout_constraintTop_toBottomOf="@+id/updatecreate_task_et"
+            android:text="@{task.taskDate}"/>
 
         <ImageView
             android:id="@+id/calender_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/date_et"
-            app:layout_constraintEnd_toEndOf="@+id/create_task_et"
-            app:layout_constraintStart_toEndOf="@+id/date_et"
-            app:layout_constraintTop_toTopOf="@+id/date_et"
+            app:layout_constraintBottom_toBottomOf="@+id/updatedate_et"
+            app:layout_constraintEnd_toEndOf="@+id/updatecreate_task_et"
+            app:layout_constraintStart_toEndOf="@+id/updatedate_et"
+            app:layout_constraintTop_toTopOf="@+id/updatedate_et"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
         <Button
-            android:id="@+id/add_btn"
+            android:id="@+id/upadte_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/add"
+            android:text="@string/update"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_et" />
+            app:layout_constraintTop_toBottomOf="@+id/updatedate_et" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.todo.ui.createtask.CreateTaskViewModel" />
+            type="com.todo.ui.create.TaskViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

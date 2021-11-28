@@ -24,7 +24,10 @@ class TaskAdapter(private val onClickListener: OnClickListener) :
         holder.bind(task)
     }
 
-
+    override fun getItemId(position: Int): Long {
+        val task=getItem(position)
+        return task.taskId.toLong()
+    }
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of [TaskEntity]
      * has been updated.
