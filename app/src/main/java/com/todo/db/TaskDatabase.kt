@@ -16,28 +16,5 @@ import androidx.room.RoomDatabase
     version = 5
 )
 abstract class TaskDatabase : RoomDatabase() {
-
     abstract val taskDao: TaskDao
-
-    companion object {
-
-        @Volatile
-        private var INSTANCE: TaskDatabase? = null
-        fun getInstance(context: Context): TaskDatabase {
-            synchronized(this) {
-                var instance = INSTANCE
-                if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        TaskDatabase::class.java,
-                        "task_database"
-                    )
-                        .fallbackToDestructiveMigration()
-                        .build()
-                    INSTANCE = instance
-                }
-                return instance
-            }
-        }
-    }
 }

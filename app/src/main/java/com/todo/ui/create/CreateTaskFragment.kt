@@ -3,24 +3,25 @@ package com.todo.ui.create
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.todo.R
 import com.todo.databinding.FragmentCreateTaskBinding
-import com.todo.db.TaskDatabase
 import com.todo.db.TaskEntity
-import com.todo.repository.TaskRepository
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
-
+@AndroidEntryPoint
 class CreateTaskFragment : Fragment() {
+
+    private val createTaskViewModel:TaskViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -28,19 +29,6 @@ class CreateTaskFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentCreateTaskBinding.inflate(inflater)
-
-        // Create an instance of the ViewModel Factory.
-        val application = requireNotNull(this.activity).application
-        val db = TaskDatabase.getInstance(application)
-        val repository = TaskRepository(db)
-        val viewModelFactory = TaskViewModelFactory(repository)
-        // Get a reference to the ViewModel associated with this fragment.
-        val createTaskViewModel =
-            ViewModelProvider(
-                this, viewModelFactory
-            ).get(TaskViewModel::class.java)
-
-
         binding.apply {
 
             viewmodel = createTaskViewModel
@@ -94,6 +82,9 @@ class CreateTaskFragment : Fragment() {
     }
 
 
+    /**
+    * Function to open Calender and set the selected date in EditText field.
+    */
     private fun calendarClickListener(editText: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -110,5 +101,4 @@ class CreateTaskFragment : Fragment() {
         datePickerDialog.datePicker.minDate = Date().time
         datePickerDialog.show()
     }
-
 }

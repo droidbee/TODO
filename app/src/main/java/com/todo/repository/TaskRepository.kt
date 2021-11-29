@@ -2,19 +2,21 @@ package com.todo.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.todo.db.TaskDao
 import com.todo.db.TaskDatabase
 import com.todo.db.TaskEntity
+import javax.inject.Inject
 
-class TaskRepository (val taskDb: TaskDatabase){
+class TaskRepository @Inject constructor(val taskDao: TaskDao){
 
     suspend fun insert(taskEntity: TaskEntity)=
-        taskDb.taskDao.insert(taskEntity)
+        taskDao.insert(taskEntity)
 
     suspend fun update(taskEntity: TaskEntity)=
-        taskDb.taskDao.update(taskEntity)
+        taskDao.update(taskEntity)
 
     suspend fun delete(taskEntity: TaskEntity)=
-        taskDb.taskDao.delete(taskEntity)
+        taskDao.delete(taskEntity)
 
-    fun getAllTasks() :LiveData<List<TaskEntity>> = taskDb.taskDao.getAllTasks()
+    fun getAllTasks() :LiveData<List<TaskEntity>> = taskDao.getAllTasks()
 }

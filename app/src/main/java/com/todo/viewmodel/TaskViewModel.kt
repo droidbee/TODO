@@ -5,11 +5,14 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.todo.db.TaskEntity
 import com.todo.repository.TaskRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
+import javax.inject.Inject
 
-class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
+@HiltViewModel
+class TaskViewModel @Inject constructor(private val taskRepository: TaskRepository) : ViewModel() {
 
     private val TAG =TaskViewModel::class.java.simpleName
 
@@ -93,18 +96,4 @@ class TaskViewModel(private val taskRepository: TaskRepository) : ViewModel() {
     }
 }
 
-/**
- * This is pretty much boiler plate code for a ViewModel Factory.
- *
- */
-class TaskViewModelFactory(
-    private val repository: TaskRepository
-) : ViewModelProvider.Factory {
-    @Suppress("unchecked_cast")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
-            return TaskViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+
