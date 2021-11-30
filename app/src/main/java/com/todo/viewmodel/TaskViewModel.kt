@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TaskViewModel @Inject constructor(private val taskRepository: TaskRepository) : ViewModel() {
 
-    private val TAG =TaskViewModel::class.java.simpleName
+    private val TAG = TaskViewModel::class.java.simpleName
 
 
     //Value which is observed to check if the insertion is success
@@ -25,8 +25,8 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
         get() = _insertionOrUpdationSuccess
 
     //Exception message to be observed
-    private  val _exceptionMessage = MutableLiveData<String?>()
-    val exceptionMessage:LiveData<String?>
+    private val _exceptionMessage = MutableLiveData<String?>()
+    val exceptionMessage: LiveData<String?>
         get() = _exceptionMessage
 
     //Variable to hold list of tasks Livedata
@@ -47,8 +47,8 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
                 _insertionOrUpdationSuccess.postValue(true)
             } catch (exception: SQLiteConstraintException) {
                 _exceptionMessage.postValue("Unique Constraint Exception")
-            }catch(exception:Exception){
-                Log.d(TAG,exception.message.toString())
+            } catch (exception: Exception) {
+                Log.d(TAG, exception.message.toString())
             }
         }
     }
@@ -67,7 +67,7 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
             try {
                 update(task)
                 _insertionOrUpdationSuccess.postValue(true)
-            }catch(exception:Exception){
+            } catch (exception: Exception) {
                 Log.d(TAG, exception.message.toString())
             }
         }
@@ -78,7 +78,10 @@ class TaskViewModel @Inject constructor(private val taskRepository: TaskReposito
     }
 
 
-    fun onDeleteSwipe(task:TaskEntity){
+    /**
+     * Called when TaskItem in recyclerview is swiped
+     */
+    fun onDeleteSwipe(task: TaskEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             delete(task)
         }

@@ -21,6 +21,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:clipToPadding="false"
             android:padding="4dp"
+            app:stackFromEnd="true"
+            app:reverseLayout="true"
             tools:listitem="@layout/recycler_row_task"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

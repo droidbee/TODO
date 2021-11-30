@@ -13,11 +13,17 @@ class TaskAdapter(private val onClickListener: OnClickListener) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
-        return TaskViewHolder(RecyclerRowTaskBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return TaskViewHolder(
+            RecyclerRowTaskBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val task=getItem(position)
+        val task = getItem(position)
         holder.itemView.setOnClickListener {
             onClickListener.onClick(task)
         }
@@ -25,9 +31,10 @@ class TaskAdapter(private val onClickListener: OnClickListener) :
     }
 
     override fun getItemId(position: Int): Long {
-        val task=getItem(position)
+        val task = getItem(position)
         return task.taskId.toLong()
     }
+
     /**
      * Allows the RecyclerView to determine which items have changed when the [List] of [TaskEntity]
      * has been updated.

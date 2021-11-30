@@ -1,9 +1,7 @@
 package com.todo.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import com.todo.db.TaskDao
-import com.todo.db.TaskDatabase
 import com.todo.db.TaskEntity
 import javax.inject.Inject
 

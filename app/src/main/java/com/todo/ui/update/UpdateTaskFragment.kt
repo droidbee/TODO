@@ -47,7 +47,11 @@ class UpdateTaskFragment : Fragment() {
 
             upadteBtn.setOnClickListener {
                 if (TextUtils.isEmpty((updatecreateTaskEt.text))) {
-                    Toast.makeText(requireContext(), R.string.task_cannot_be_empty, Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.task_cannot_be_empty,
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     return@setOnClickListener
                 }
@@ -62,6 +66,7 @@ class UpdateTaskFragment : Fragment() {
             }
         }
 
+        //Observe status message to trigger navigation
         updateTaskViewModel.insertionOrUpdationSuccess.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 Toast.makeText(requireContext(), R.string.task_updated, Toast.LENGTH_SHORT)

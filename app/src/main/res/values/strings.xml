@@ -15,5 +15,7 @@
     <string name="select_date">Please select a date</string>
     <string name="task_exists">Task already exists. Please enter a different task.</string>
     <string name="unique_constraint_exception">Unique Constraint Exception</string>
+    <string name="todo_app_online">TODO App is online now</string>
+    <string name="no_internet_connection">No Internet connection</string>
 
 </resources>

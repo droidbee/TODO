@@ -47,6 +47,7 @@ class TasksFragment : Fragment() {
         }
 
 
+        //Code to delete Task on Swipe
         ItemTouchHelper(object  : ItemTouchHelper.SimpleCallback(0,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
             override fun onMove(
@@ -72,7 +73,7 @@ class TasksFragment : Fragment() {
         }).attachToRecyclerView(binding.recyclerView)
 
 
-
+        //Observe tasks from viewmodel to display on the home screen
         taskViewModel.tasks.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)

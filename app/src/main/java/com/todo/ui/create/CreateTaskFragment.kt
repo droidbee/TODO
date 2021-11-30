@@ -21,13 +21,13 @@ import java.util.*
 @AndroidEntryPoint
 class CreateTaskFragment : Fragment() {
 
-    private val createTaskViewModel:TaskViewModel by viewModels()
+    private val createTaskViewModel: TaskViewModel by viewModels()
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+
         val binding = FragmentCreateTaskBinding.inflate(inflater)
         binding.apply {
 
@@ -43,7 +43,11 @@ class CreateTaskFragment : Fragment() {
 
             addBtn.setOnClickListener {
                 if (TextUtils.isEmpty((createTaskEt.text))) {
-                    Toast.makeText(requireContext(), R.string.task_cannot_be_empty, Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.task_cannot_be_empty,
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     return@setOnClickListener
                 }
@@ -62,6 +66,7 @@ class CreateTaskFragment : Fragment() {
         }
 
 
+        //Observe the status message from the viewmodel to trigger necessary navigation
         createTaskViewModel.insertionOrUpdationSuccess.observe(viewLifecycleOwner, Observer {
             if (it == true) {
                 Toast.makeText(requireContext(), "Task added successfully!", Toast.LENGTH_SHORT)
@@ -72,8 +77,9 @@ class CreateTaskFragment : Fragment() {
         })
 
 
+        //Observe the exception message from viewmodel to check Unique constraint for Task name
         createTaskViewModel.exceptionMessage.observe(viewLifecycleOwner, Observer {
-            if(it=="Unique Constraint Exception"){
+            if (it == "Unique Constraint Exception") {
                 Toast.makeText(requireContext(), R.string.task_exists, Toast.LENGTH_SHORT)
                     .show()
             }
@@ -83,8 +89,8 @@ class CreateTaskFragment : Fragment() {
 
 
     /**
-    * Function to open Calender and set the selected date in EditText field.
-    */
+     * Function to open Calender and set the selected date in EditText field.
+     */
     private fun calendarClickListener(editText: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
